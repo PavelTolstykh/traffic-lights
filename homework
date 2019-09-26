@@ -1,0 +1,74 @@
+
+const int led_r = 2;
+const int led_y = 3;
+const int led_g = 4;
+const int button = 5;
+
+void setup() 
+{
+  pinMode(led_r, OUTPUT);
+  pinMode(led_y, OUTPUT);
+  pinMode(led_g, OUTPUT);
+  pinMode(button, INPUT_PULLUP);
+}
+
+void loop() 
+{
+    int buttonState = !digitalRead(button);
+    
+    digitalWrite(led_g, HIGH);
+    flick();
+
+    if (buttonState == HIGH)
+    {
+        PESH();
+    }
+    
+    else
+    {
+        CAR();
+    }
+}
+
+void PESH()
+{
+    delay(500);
+    digitalWrite(led_g, LOW);
+    digitalWrite(led_y, HIGH);
+    delay(1000);
+    digitalWrite(led_y, LOW);
+    digitalWrite(led_r, HIGH);
+    delay(2000);
+    digitalWrite(led_r, LOW);
+}
+
+void CAR()
+{
+    delay(1000);
+    digitalWrite(led_g, LOW);
+    digitalWrite(led_y, HIGH);
+    delay(3000);
+    digitalWrite(led_y, LOW);
+    digitalWrite(led_r, HIGH);
+    delay(2000);
+    digitalWrite(led_y, HIGH);
+    delay(3000);
+    digitalWrite(led_r, LOW);
+    digitalWrite(led_y, LOW);
+}
+
+void flick()
+{
+    delay(2000);
+    digitalWrite(led_g,LOW);
+    delay(1000);
+    digitalWrite(led_g, HIGH);
+    delay(1000);
+    digitalWrite(led_g,LOW);
+    delay(1000);
+    digitalWrite(led_g, HIGH);
+    delay(1000);
+    digitalWrite(led_g, LOW);
+    delay(1000);
+    digitalWrite(led_g, HIGH);
+}
